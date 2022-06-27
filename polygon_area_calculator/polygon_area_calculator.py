@@ -28,9 +28,8 @@ class Rectangle:
         return picture
 
     def get_amount_inside(self, width, height):
-        if width > self.width and height > self.height:
-
-
+        pass
+        # if width > self.width and height > self.height:
 
     # def __str__(self):
     #     return self.get_picture()
