@@ -27,13 +27,26 @@ class Rectangle:
             picture += f"\n"
         return picture
 
-    def get_amount_inside(self, width, height):
-        pass
-        # if width > self.width and height > self.height:
+    def get_amount_inside(self, shape):
+        if self.width > shape.width and self.height > shape.height:
+            amount_in_x = self.width // shape.width
+            amount_in_y = self.height // shape.height
+            return amount_in_x * amount_in_y
+        return 0
 
-    # def __str__(self):
-    #     return self.get_picture()
+    def __str__(self):
+        return f"Rectangle(width={self.width}, height={self.height})"
 
 
 class Square(Rectangle):
-    pass
+    def __init__(self, length):
+        super().__init__(self, length)
+        self.width = length
+        self.height = length
+
+    def set_side(self, length):
+        self.width = length
+        self.height = length
+
+    def __str__(self):
+        return f"Square(side={self.width})"
