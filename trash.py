@@ -20,7 +20,26 @@ class Hat:
         return self.contents
 
 
-hat1 = Hat(red=5, orange=4, black=1, blue=0, pink=2, striped=9)
-print(hat1.contents)
-print(hat1.draw(2))
+def experiment(hatf, expected_balls, num_balls_drawn, num_experiments):
+    m = 0
+    print(f"hatf.draw: {hatf.draw(num_balls_drawn)}")
+    for exp in range(num_experiments):
+        for k, v in expected_balls:
+            true_if_here = 0
+            if expected_balls[k] >= hatf.draw(num_balls_drawn).count(expected_balls[v]):
+                true_if_here += 1
+        if true_if_here == len()
+    return m / num_experiments
 
+
+hat = Hat(black=6, red=4, green=3)
+probability = experiment(hatf=hat,
+                         expected_balls={"red": 2, "green": 1},
+                         num_balls_drawn=5,
+                         num_experiments=2000)
+
+
+# hat1 = Hat(red=5, orange=4, black=1, blue=0, pink=2, striped=9)
+# print(hat1.contents)
+# print(hat1.draw(2))
+print(f"Probability is: {probability}")
