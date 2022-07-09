@@ -1,0 +1,1 @@
+self.contents decrease with each experiment.. it should be full every experiment to choose enough balls

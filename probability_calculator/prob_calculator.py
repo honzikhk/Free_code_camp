@@ -12,9 +12,11 @@ class Hat:
         if number_of_balls >= len(self.contents):
             return self.contents
         took = []
-        for each in range(number_of_balls):
-            took.append(self.contents.pop(random.randint(0, len(self.contents) - len(took))))
-        # self.contents.extend(took)
+        # balls = self.contents.copy()
+        for i in range(number_of_balls):
+            random_index = random.randint(0, len(self.contents) - 1)
+            draw = self.contents.pop(random_index)
+            took.append(draw)
         return took
 
     def __str__(self):
@@ -25,16 +27,21 @@ class Hat:
 
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    true_if_here = []
+    expected_balls_lst = []
+    for key in expected_balls:
+        for each in range(expected_balls[key]):
+            expected_balls_lst.append(key)
+    successful_experiments = 0
     for exp in range(num_experiments):
         drawn = hat.draw(num_balls_drawn)
-        for k in expected_balls:
-            if drawn.count(k) >= expected_balls[k]:
-                true_if_here.append(1)
+        cnt = 0
+        for e in expected_balls_lst:
+            if expected_balls_lst.count(e) <= drawn.count(e):
+                cnt += 1
             else:
                 break
-    if len(true_if_here) >= len(expected_balls):
-        return len(true_if_here) / num_experiments
-    else:
-        return "ou"
-
+        if len(expected_balls_lst) == cnt:
+            successful_experiments += 1
+        else:
+            continue
+    return successful_experiments / num_experiments
